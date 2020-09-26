@@ -22,7 +22,7 @@ import seedu.address.model.project.Project;
 public class TypicalProjects {
 
     public static final Project ALICE = new ProjectBuilder().withName("Alice Pauline")
-            .withPhone("94351253")
+            .withPhone("94351253").withEmail("alice@example.com")
             .withTags("friends").build();
     public static final Project BENSON = new ProjectBuilder().withName("Benson Meier")
             .withEmail("johnd@example.com").withPhone("98765432")
