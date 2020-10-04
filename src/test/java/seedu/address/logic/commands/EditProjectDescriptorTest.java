@@ -37,8 +37,8 @@ public class EditProjectDescriptorTest {
         assertFalse(DESC_AMY.equals(DESC_BOB));
 
         // different name -> returns false
-        EditProjectDescriptor editedAmy = new EditProjectDescriptorBuilder(DESC_AMY)
-            .withProjectName(VALID_NAME_BOB).build();
+        EditProjectDescriptor editedAmy = new EditProjectDescriptorBuilder(DESC_AMY).
+            withProjectName(VALID_NAME_BOB).build();
         assertFalse(DESC_AMY.equals(editedAmy));
 
         // different phone -> returns false
