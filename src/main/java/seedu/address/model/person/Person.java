@@ -35,6 +35,19 @@ public class Person {
         this.address = address;
     }
 
+    /**
+     * Overloaded constructor to take in listOfParticipations
+     */
+    public Person(PersonName personName, Phone phone, Email email, Address address, HashMap<ProjectName,
+        Participation> listOfParticipations) {
+        requireAllNonNull(personName, phone, email, address);
+        this.personName = personName;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.listOfParticipations = listOfParticipations;
+    }
+
     public PersonName getPersonName() {
         return personName;
     }
@@ -49,6 +62,10 @@ public class Person {
 
     public Address getAddress() {
         return address;
+    }
+
+    public HashMap<ProjectName, Participation> getParticipations() {
+        return this.listOfParticipations;
     }
 
     public void updatePersonName(String newPersonNameStr) {

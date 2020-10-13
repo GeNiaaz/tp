@@ -1,4 +1,4 @@
-package seedu.address.logic.commands.catalogue;
+package seedu.address.logic.commands.project;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TEAMMATE_ADDRESS;
@@ -6,34 +6,25 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TEAMMATE_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TEAMMATE_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TEAMMATE_PHONE;
 
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 import seedu.address.commons.core.Messages;
-import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.meeting.Meeting;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.PersonName;
 import seedu.address.model.person.Phone;
-import seedu.address.model.project.Deadline;
 import seedu.address.model.project.Participation;
 import seedu.address.model.project.Project;
-import seedu.address.model.project.ProjectDescription;
 import seedu.address.model.project.ProjectName;
-import seedu.address.model.project.RepoUrl;
-import seedu.address.model.tag.ProjectTag;
-import seedu.address.model.task.Task;
+
 /**
  * Edits the details of an existing project in the main catalogue.
  */
@@ -80,7 +71,7 @@ public class EditTeammateCommand extends Command {
         List<Person> lastShownList = project.getTeammates();
 
         if (!project.getTeammatePresence(name)) {
-            throw new CommandException(Messages.MESSAGE_INVALID_TEAMMATE_DISPLAYED_NAME;
+            throw new CommandException(Messages.MESSAGE_INVALID_TEAMMATE_DISPLAYED_NAME);
         }
 
         int indexOfteammate = project.getTeammateIndex(name);
@@ -97,21 +88,19 @@ public class EditTeammateCommand extends Command {
      * Creates and returns a {@code Person} with the details of {@code personToEdit}
      * edited with {@code editPersonDescriptor}.
      */
-    private static Project createEditedTeammate(Person teammateToEdit, EditTeammateDescriptor editTeammateDescriptor) {
+    private static Person createEditedTeammate(Person teammateToEdit, EditTeammateDescriptor editTeammateDescriptor) {
         assert teammateToEdit != null;
 
-        ProjectName updatedProjectName = editTeammateDescriptor.getPersonName().orElse(projectToEdit.getProjectName());
-        Deadline updatedDeadline = editTeammateDescriptor.getDeadline().orElse(projectToEdit.getDeadline());
-        RepoUrl updatedRepoUrl = editTeammateDescriptor.getRepoUrl().orElse(projectToEdit.getRepoUrl());
-        ProjectDescription updatedProjectDescription = editTeammateDescriptor.getProjectDescription()
-            .orElse(projectToEdit.getProjectDescription());
-        Set<ProjectTag> updatedProjectTags = editTeammateDescriptor.getProjectTags().orElse(
-            projectToEdit.getProjectTags());
-        Set<Task> updatedTasks = editTeammateDescriptor.getTasks().orElse(projectToEdit.getTasks());
-        Set<Meeting> updatedMeetings = editTeammateDescriptor.getMeetings().orElse(projectToEdit.getMeetings());
+        PersonName updatedTeammateName =
+            editTeammateDescriptor.getTeammateName().orElse(teammateToEdit.getPersonName());
+        Phone updatedPhone = editTeammateDescriptor.getPhone().orElse(teammateToEdit.getPhone());
+        Email updatedEmail = editTeammateDescriptor.getEmail().orElse(teammateToEdit.getEmail());
+        Address updatedAddress = editTeammateDescriptor.getAddress()
+            .orElse(teammateToEdit.getAddress());
+        HashMap<ProjectName, Participation> updatedParticipation =
+            editTeammateDescriptor.getParticipation().orElse(teammateToEdit.getParticipations());
 
-        return new Project(updatedProjectName, updatedDeadline, updatedRepoUrl, updatedProjectDescription,
-            updatedProjectTags, new HashMap<>(), updatedTasks, updatedMeetings);
+        return new Person(updatedTeammateName, updatedPhone, updatedEmail, updatedAddress, updatedParticipation);
     }
 
     @Override
@@ -122,14 +111,14 @@ public class EditTeammateCommand extends Command {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof EditCommand)) {
+        if (!(other instanceof EditTeammateCommand)) {
             return false;
         }
 
         // state check
-        EditCommand e = (EditCommand) other;
-        return index.equals(e.index)
-            && editProjectDescriptor.equals(e.editProjectDescriptor);
+        EditTeammateCommand e = (EditTeammateCommand) other;
+        return name.equals(e.name)
+            && editTeammateDescriptor.equals(e.editTeammateDescriptor);
     }
 
     /**
@@ -209,13 +198,14 @@ public class EditTeammateCommand extends Command {
          * Returns an unmodifiable assignees set, which throws {@code UnsupportedOperationException}
          * if modification is attempted.
          * Returns {@code Optional#empty()} if {@code assignees} is null.
+         * TODO: THIS MAY FAIL, + 5 lines down
          */
-        public Optional<Set<Participation>> getParticipation() {
+
+        public Optional<HashMap<ProjectName, Participation>> getParticipation() {
             return (listOfParticipations != null)
-                ? Optional.of((listOfParticipations))
+                ? Optional.of(listOfParticipations)
                 :Optional.empty();
         }
-
 
         @Override
         public boolean equals(Object other) {
@@ -236,8 +226,7 @@ public class EditTeammateCommand extends Command {
                 && getPhone().equals(e.getPhone())
                 && getEmail().equals(e.getEmail())
                 && getAddress().equals(e.getAddress())
-                && get().equals(e.getProjectTags())
-                && getTasks().equals(e.getTasks());
+                && getParticipation().equals(e.getParticipation());
         }
     }
 }
