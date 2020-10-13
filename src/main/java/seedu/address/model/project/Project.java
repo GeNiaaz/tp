@@ -147,6 +147,44 @@ public class Project {
     }
 
     /**
+     * Checks if name is in teammate list
+     * TODO: IMPROVE THE WAY A TEAMMATE IS FOUND IN THE LIST
+     */
+    public boolean getTeammatePresence(String name) {
+        boolean teammatePresent = false;
+        List<Person> listOfTeammates = this.getTeammates();
+        for (Person teammate : listOfTeammates) {
+            if (teammate.getPersonName().toString().equals(name)) {
+                teammatePresent = true;
+            }
+        }
+        return teammatePresent;
+    }
+
+    /**
+     * returns the index of teammate found in the list
+     */
+    public int getTeammateIndex(String name) {
+        List<Person> listOfTeammates = this.getTeammates();
+        for (int i = 0; i < listOfTeammates.size(); i++) {
+            if (listOfTeammates.get(i).getPersonName().toString().equals(name)) {
+                return i;
+            }
+        }
+        //never reached
+        return -1;
+    }
+
+    /**
+     * Removes Teammate from Project
+     * TODO: UPDATE STORAGE BY REMOVING TEAMMATE
+     */
+    public void removeParticipation(Person teammate) {
+        listOfParticipations.remove(teammate.getPersonName());
+    }
+
+
+    /**
      * Returns the list of tasks that is last shown.
      */
     public List<Task> getFilteredTaskList() {
