@@ -122,8 +122,8 @@ public class EditTeammateCommand extends Command {
     }
 
     /**
-     * Stores the details to edit the project with. Each non-empty field value will replace the
-     * corresponding field value of the project.
+     * Stores the details to edit the teammate (Person) with. Each non-empty field value will replace the
+     * corresponding field value of the teammate (Person).
      */
     public static class EditTeammateDescriptor {
         private PersonName name;
