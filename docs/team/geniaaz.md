@@ -12,6 +12,8 @@ Taskmania (based off AB3) is a **desktop app for a project leader to manage team
  
 Given below are my contributions to the project.
 
+* **Code contributed**: [RepoSense link](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other&tabOpen=true&tabType=authorship&zFR=false&tabAuthor=GeNiaaz&tabRepo=AY2021S1-CS2103T-W10-3%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code)
+
 * **Model modification**{24/09/20}: Added the Person model and its attributes. (Pull requests [\#13](https://github
 .com/AY2021S1-CS2103T-W10-3/tp/pull/13), [\#17](https://github.com/AY2021S1-CS2103T-W10-3/tp/pull/17))
   * What it means: persons that participates in projects.
@@ -34,13 +36,23 @@ Given below are my contributions to the project.
     * Created NewTeammateCommandParser class to parse command
     * Created NewTeammateCommand class to handle the logic
     * Created ParsePersonUtil class to handle the validating of variables passed in to NewTeammateCommand  
+    
+* **New Feature** {18/10/20}: Create new Command to edit Teammates  (Pull requests [\#123](https://github.com/AY2021S1-CS2103T-W10-3/tp/pul/123))
+  * Changes made: 
+    * EditTeammate now can change attributes of Teammates
 
+* **Enhancements to existing features** {18/10/20}: Update NewTeammate to take in prefixes (Pull requests [\#123](https://github.com/AY2021S1-CS2103T-W10-3/tp/pull/123))
+  * Changes made: 
+    * AddTeammate now uses prefixes to allow user to add attributes in any order they wish with appropriate prefixes
 
-* **Code contributed**: [RepoSense link](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other&tabOpen=true&tabType=authorship&zFR=false&tabAuthor=GeNiaaz&tabRepo=AY2021S1-CS2103T-W10-3%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code)
+* **Enhancements to existing features** {18/10/20}: Update tests for Teammate Commands (Pull requests [\#141](https://github.com/AY2021S1-CS2103T-W10-3/tp/pull/123))
+  * Changes made: 
+    * Tests added to increase path coverage for Teammate classes
 
 * **Project management**:
 
-* **Enhancements to existing features**:
+
+
 
 * **Documentation**:
   * User Guide:
