@@ -1,4 +1,4 @@
-package seedu.address.logic.commands.teammate;
+package seedu.address.logic.commands.project.teammate;
 
 import static java.util.Objects.requireNonNull;
 

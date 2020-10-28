@@ -5,7 +5,8 @@ import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailur
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.project.TaskFilterCommand;
+import seedu.address.logic.commands.project.task.TaskFilterCommand;
+import seedu.address.logic.parser.task.TaskFilterCommandParser;
 
 class TaskFilterCommandParserTest {
     private static final String MESSAGE_INVALID_FORMAT =

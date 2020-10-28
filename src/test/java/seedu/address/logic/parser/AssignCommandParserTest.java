@@ -8,7 +8,8 @@ import static seedu.address.testutil.TypicalPersons.ALICE;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.project.AssignCommand;
+import seedu.address.logic.commands.project.task.AssignCommand;
+import seedu.address.logic.parser.task.AssignCommandParser;
 
 /**
  * As we are only doing white-box testing, our test cases do not cover path variations

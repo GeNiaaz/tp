@@ -1,15 +1,17 @@
-package seedu.address.logic.parser;
+package seedu.address.logic.parser.teammate;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
 import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.project.ViewTaskCommand;
+import seedu.address.logic.commands.project.teammate.ViewTeammateCommand;
+import seedu.address.logic.parser.Parser;
+import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 /**
  * Parses input arguments and creates a new ViewCommand object
  */
-public class ViewTaskCommandParser implements Parser<ViewTaskCommand> {
+public class ViewTeammateCommandParser implements Parser<ViewTeammateCommand> {
 
     /**
      * Parses the given {@code String} of arguments in the context of the ViewCommand
@@ -17,7 +19,7 @@ public class ViewTaskCommandParser implements Parser<ViewTaskCommand> {
      *
      * @throws ParseException if the user input does not conform the expected format
      */
-    public ViewTaskCommand parse(String args) throws ParseException {
+    public ViewTeammateCommand parse(String args) throws ParseException {
         requireNonNull(args);
 
         Index index;
@@ -25,9 +27,10 @@ public class ViewTaskCommandParser implements Parser<ViewTaskCommand> {
         try {
             index = ParserUtil.parseIndex(args.trim());
         } catch (ParseException pe) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ViewTaskCommand.MESSAGE_USAGE), pe);
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    ViewTeammateCommand.MESSAGE_USAGE), pe);
         }
 
-        return new ViewTaskCommand(index);
+        return new ViewTeammateCommand(index);
     }
 }

@@ -21,7 +21,8 @@ import static seedu.address.testutil.TypicalPersons.DESC_A;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.project.NewTeammateCommand;
+import seedu.address.logic.commands.project.teammate.NewTeammateCommand;
+import seedu.address.logic.parser.teammate.NewTeammateCommandParser;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.GitUserName;
 import seedu.address.model.person.Person;
